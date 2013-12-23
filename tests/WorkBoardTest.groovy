@@ -1,5 +1,5 @@
-import WorkTimerApplication.BoardItem
 import WorkTimerApplication.TimeTracker
+import WorkTimerApplication.WorkBoard
 import WorkTimerApplication.WorkItem
 
 /**
@@ -12,7 +12,6 @@ class WorkBoardTest extends GroovyTestCase {
                             new WorkItem("work item 2", new TimeTracker()),
                             new WorkItem("work item 3", new TimeTracker())
                        ].toList()
-
 
     def timer = new TimeTracker()
     def description = "test description"
@@ -31,51 +30,15 @@ class WorkBoardTest extends GroovyTestCase {
     void testRemoveWorkItemFromPosition1Of3ExpectSize2() {
         def workBoard = new WorkBoard("test work board", workItemList)
         def workBoardSize = workBoard.removeWorkItem(1)
-        assert 2 == workBoard.getNumberOfWorkItemsOnBoard()
+        assert 2 == workBoardSize
     }
 
-    void testMoveWorkItemToPositionInTheFront() {
-
-    }
-
-    void testMoveWorkItemToPositionAtTheEnd() {
-
-    }
-
-    void testMoveWorkItemToPositionNumberTwo() {
-
-    }
-
-}
-
-public class WorkBoard {
-
-    private List<BoardItem> boardItems;
-    private String name;
-    public WorkBoard(String name, List<BoardItem> boardItems) {
-        this.boardItems = boardItems;
-        this.name = name;
-    }
-    public WorkBoard(String name) {
-        this(name, new ArrayList<BoardItem>());
-    }
-
-    public int getNumberOfWorkItemsOnBoard() {
-        return boardItems.size();
-    }
-
-    public int addWorkItem(WorkItem workItem) {
-        boardItems.add(workItem);
-        return boardItems.size();
-    }
-
-    public int removeWorkItem(int position) {
-        boardItems.remove(position);
-        return boardItems.size();
-    }
-
-    public void moveWorkItem(int fromPosition, int toPosition) {
-        Collections.swap(boardItems, fromPosition, toPosition);
-
+    void testSwapWorkItemFromPosition3to1ExceptWorkItem3InPosition0() {
+        def workBoard = new WorkBoard("test work board", workItemList)
+        def itemOne = workItemList.get(0).getTitle()
+        def itemThree = workItemList.get(2).getTitle()
+        def boardList = workBoard.moveWorkItem(3,1)
+        assert itemThree == boardList.get(0).getTitle()
     }
 }
+
