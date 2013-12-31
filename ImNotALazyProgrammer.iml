@@ -19,6 +19,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="groovy-2.2.1" level="application" />
+    <orderEntry type="library" name="jgoodies-common-1.2.1" level="project" />
   </component>
 </module>
 
