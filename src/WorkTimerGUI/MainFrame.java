@@ -9,7 +9,6 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         super("Hello World");
 
-
         setSize(600, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
